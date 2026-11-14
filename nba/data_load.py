@@ -1,5 +1,6 @@
 import pandas as pd
 from pathlib import Path
+from nba.config import load_config
 
 
 def load_csv(data_path: Path) -> pd.DataFrame:
@@ -7,7 +8,7 @@ def load_csv(data_path: Path) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    # TODO: avoid hardcoding this data path using the pathlib library
-    data_path = Path(__file__).resolve().parent.parent / "data" / "game.csv"
+    config = load_config()
+    data_path = config.data.data_path
     df = load_csv(data_path)
     print(data_path)
